@@ -19,7 +19,7 @@ export const NewTodoForm: React.FC<NewTodoFormProps> = ({
     }
   };
 
-  useEffect(() => {
+    useEffect(() => {
     if (!loading && inputRef.current) {
       inputRef.current.focus();
     }
@@ -34,7 +34,6 @@ export const NewTodoForm: React.FC<NewTodoFormProps> = ({
         className="todoapp__new-todo"
         placeholder="What needs to be done?"
         disabled={loading}
-        autoFocus
       />
     </form>
   );

@@ -8,7 +8,7 @@ import { useFocus } from './useFocus';
 
 export const useTodosManager = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [filter, setFilter] = useState<TodoStatus>(TodoStatus.All);
 
@@ -21,11 +21,10 @@ export const useTodosManager = () => {
   };
 
   useEffect(() => {
-    setLoading(false);
     getTodos()
       .then(setTodos)
       .catch(() => setErrorMessage(ErrorMessages.LOAD_TODOS))
-      .finally(() => setLoading(true));
+      .finally(() => setLoading(false));
   }, []);
 
   const handleAddTodo = (title: string) => {

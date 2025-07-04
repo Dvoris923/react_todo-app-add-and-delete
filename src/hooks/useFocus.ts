@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 export const useFocus = () => {
-  const [shouldFocus, setShouldFocus] = useState(false);
+  const [shouldFocus, setShouldFocus] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
