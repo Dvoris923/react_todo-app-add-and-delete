@@ -65,6 +65,7 @@ export const useTodosManager = () => {
       .finally(() => {
         setShouldFocus(true);
         setTempTodo(null);
+        setLoading(false);
       });
   };
 
@@ -74,7 +75,10 @@ export const useTodosManager = () => {
     deleteTodo(todoId)
       .then(() => setTodos(prev => prev.filter(todo => todo.id !== todoId)))
       .catch(() => setErrorMessage(ErrorMessages.DELETE_TODO))
-      .finally(() => setLoadingId(prev => prev.filter(id => id !== todoId)));
+      .finally(() => {
+        setLoadingId(prev => prev.filter(id => id !== todoId));
+        setShouldFocus(true);
+      });
   };
 
   const handleClearCompleted = () => {
