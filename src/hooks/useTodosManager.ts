@@ -47,10 +47,11 @@ export const useTodosManager = () => {
     };
 
     setTempTodo(newTempTodo);
+    setLoading(true);
 
     addTodo(newTempTodo)
-      .then(adddTodo => {
-        setTodos(prev => [...prev, adddTodo]);
+      .then(addedTodo => {
+        setTodos(prev => [...prev, addedTodo]);
         setTempTodo(null);
 
         if (inputRef.current) {
@@ -59,6 +60,7 @@ export const useTodosManager = () => {
       })
       .catch(() => {
         activeError(ErrorMessages.ADD_TODO);
+        setLoading(false);
       })
       .finally(() => {
         setShouldFocus(true);

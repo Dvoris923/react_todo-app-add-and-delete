@@ -19,12 +19,6 @@ export const NewTodoForm: React.FC<NewTodoFormProps> = ({
     }
   };
 
-    useEffect(() => {
-    if (!loading && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [loading, inputRef]);
-
   return (
     <form className="new-todo-form" onSubmit={handleSubmit}>
       <input
